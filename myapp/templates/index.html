@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="el">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+  </head>
+  <body>
+  <div class="row">
+  <div class="col-md-6 offset-md-3">
+  <h4>Index page</h4>
+  <p>
+  User: {{ current_user.user_record['username']|safe}}
+  </p>
+  <p>
+  Check <a href="{{ url_for("hello.other_page") }}">another</a> page!
+  </p>
+  <p>
+  <a class="btn btn-primary" href="{{ url_for("login.logout_page") }}">Logout</a>
+  </p>
+  </div>
+  </div>
+  </body>
+</html>
+
+

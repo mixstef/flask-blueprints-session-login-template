@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="el">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+  </head>
+  <body>
+  <div class="row">
+  <div class="col-md-6 offset-md-3">
+  <h4>User Login</h4>
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}    {# this takes care of Flask-WTF csrf token too #}
+    <div class="form-group">
+      {{ form.username(**{'class':'form-control','aria-describedby':'userhlp','placeholder':'Username'}) }}
+      {% if form.username.errors %}
+      <ul class="form-text text-danger">
+      {% for error in form.username.errors %}<li>{{ error }}</li>{% endfor %}
+      </ul>
+      {% else %} 
+      <small id=userhlp" class="form-text text-muted">Enter your username.</small>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.passwd(**{'class':'form-control','aria-describedby':'passhlp','placeholder':'Password'}) }}
+      {% if form.passwd.errors %}
+      <ul class="form-text text-danger">
+      {% for error in form.passwd.errors %}<li>{{ error }}</li>{% endfor %}
+      </ul>
+      {% else %} 
+      <small id=passhlp" class="form-text text-muted">Enter your password.</small>
+      {% endif %}
+    </div>
+
+	{% if cred_error %}
+	<div class="alert alert-danger">
+	Invalid username or password, please retry!
+	</div>
+	{% endif %}
+	
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+  <p>
+  Not registered? Register <a href="{{ url_for("login.register_page") }}">here</a>!
+  </p>
+  </div>
+  </div>
+  </body>
+</html>
+
+
